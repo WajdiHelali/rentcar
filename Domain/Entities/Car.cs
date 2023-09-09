@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    internal class Car:Entity
+    public class Car:Entity
     {
         public string Label { get; set; } = null!;
         public CarModel Model { get; set; }=null!;
@@ -16,5 +16,6 @@ namespace Domain.Entities
         public bool IsAvailable { get; set; } = true;
         public decimal DailyRate { get; set; }
         public decimal PricePerDay { get; set; }
+        public ICollection<RentalRecord> RentalRecords  { get; set; }=new List<RentalRecord>();
     }
 }
