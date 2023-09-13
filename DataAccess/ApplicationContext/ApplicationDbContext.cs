@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace DataAccess.ApplicationContext
 {
@@ -17,8 +18,15 @@ namespace DataAccess.ApplicationContext
         }
    
 
-        DbSet <Customer> Customers { get; set; }
-        DbSet<Car> Cars { get; set; }
-        DbSet<RentalRecord> RentalRecords { get; set;}
+        public DbSet <Customer> Customers { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<RentalRecord> RentalRecords { get; set;}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+           
+        }
     }
 }

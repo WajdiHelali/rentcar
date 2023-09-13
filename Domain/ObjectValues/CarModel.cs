@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain.ObjectValues
 {
-    public enum Models
-    {
-        MERCEDES,
-        BMW,
-        RENAULT,
-        CITROENE
-    }
+ 
     public record CarModel
     {
-        private readonly Models Value;
+        private readonly string _value;
 
-        public CarModel(Models model)
+        public CarModel(string model)
         {
-            Value = model;
+            _value = model;
         }
+
+        public string Value => _value;
     }
 }
